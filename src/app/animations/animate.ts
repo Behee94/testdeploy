@@ -1,4 +1,4 @@
-import {trigger, query, transition, animate, style, keyframes, stagger, group} from '@angular/animations';
+import {trigger, query, transition, animate, style, keyframes, stagger, group, state} from '@angular/animations';
 
 export let fade;
 fade = trigger('fade', [
@@ -43,3 +43,17 @@ todo = trigger('todo', [
         ]))
     ])
  ]) ]);
+ export let collapsed;
+ collapsed = trigger('collapsed', [
+    state('collapsed', style({
+        height: 0,
+        opacity: 0,
+        paddingTop: 0,
+        paddingBottom: 0,
+    })),
+    transition('collapsed => expanded', [
+        animate('300ms ease-out', style({
+            height: 2,
+            paddingTop: 20,
+            paddingBottom: 20,
+   }))])]);
