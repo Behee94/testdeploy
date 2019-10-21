@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~animate.css/animate.css";
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 
 .starter-template {
     width: 100%;
@@ -16,6 +18,5 @@ body {
     font-weight: 400;
     line-height: 1.5;
     color: #212529;
-    text-align: center;
     padding-top: 90px;
 }

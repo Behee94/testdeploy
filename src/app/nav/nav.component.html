@@ -1,6 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" routerLink="/">Navbar</a>
-  <span>ddd</span>
+  <a class="navbar-brand" routerLink="/">Shop</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -8,19 +7,57 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/shopping-cart">Shopping cart <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/shopping-cart">Shopping cart
+          <span class="badge badge-warning badge-pill"
+          *ngIf="cart$ | async as cart"
+          >{{cart.getTotal}}</span>
+          <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/login">Login<span class="sr-only">(current)</span></a>
-      </li>
-      <li ngbDropdown  class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" ngbDropdownToggle id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+      
+      <ng-template #anon>
+        <div>
+            <a class="nav-link" routerLink="/login">Login</a>
+        </div>
+      </ng-template>
+      <li ngbDropdown *ngIf="appUser else anon" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" ngbDropdownToggle id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{appUser.name}}</a>
         <div class="dropdown-menu" ngbDropdownMenu  aria-labelledby="dropdown01">
           <a class="dropdown-item" routerLink="/orders">my orders</a>
+          <ng-container *ngIf="appUser.isAdmin">
           <a class="dropdown-item" routerLink="admin/orders">Manage orders</a>
           <a class="dropdown-item" routerLink="admin/products">Manage products</a>
+        </ng-container>
+         <a class="dropdown-item"  (click)="logout()">   Logout</a>
         </div>
       </li>
     </ul>
   </div>
 </nav>
+
+<script type="text/javascript">
+		
+  $(function(){
+    
+    $(window).on('scroll',function(){
+   
+      if( $(window).scrollTop() > 0 ){
+        
+        $('nav').addClass('black');
+      } else {
+       $('nav').removeClass('black'); 
+      }
+      
+    });
+    
+    $('nav ul li a').mouseover(function(){
+      
+     $('nav ul li a').parent().siblings().find('a.active').removeClass('active');
+     $(this).addClass('active');
+      
+    });
+   
+  });
+    
+   
+ 
+ </script>

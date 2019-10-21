@@ -1,0 +1,26 @@
+<div class="card" *ngIf="p.payload.val()[0]" style="width: 18rem;">
+  <img class="card-img-top" src="{{p.payload.val()[3]}}" >
+  <div class="card-body">
+    <h5 class="card-title">{{p.payload.val()[0]}}</h5>
+    <p class="card-text">{{p.payload.val()[1] | currency: 'USD'}}</p>
+    <p class="card-text">{{p.payload.val()[2]}}</p>
+  </div> 
+  <div class="card-footer">
+  <button
+  *ngIf="getQuantity() === 0 ; else updateQuantity"
+  class="btn btn-primary btn-block" (click)="add()">Add to cart</button>  
+  <ng-template #updateQuantity>
+    <div class="row no-gutters">
+      <div class="col-2">
+       <button class="btn btn-primary btn-block" (click)="remove()">-</button>  
+      </div>
+      <div class="col text-center">
+        {{getQuantity()}} item in Cart 
+   </div>
+    <div class="col-2">
+      <button class="btn btn-primary btn-block" (click)="add()">+</button>  
+  </div>
+    </div>
+  </ng-template>
+  </div>
+

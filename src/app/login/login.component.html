@@ -1,25 +1,30 @@
-<form class="form-signin">
-  <div class="text-center mb-4">
-    <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-    <h1 class="h3 mb-3 font-weight-normal">Floating labels</h1>
-    <p>Build form controls with floating labels via the <code>:placeholder-shown</code> pseudo-element. <a href="https://caniuse.com/#feat=css-placeholder-shown">Works in latest Chrome, Safari, and Firefox.</a></p>
-  </div>
+<mat-card>
 
-  <div class="form-label-group">
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-    <label for="inputEmail">Email address</label>
-  </div>
+<div class="example-container">
+  <mat-form-field>
+    <input matInput [(ngModel)]="nom" placeholder="Nom">
+  </mat-form-field>
 
-  <div class="form-label-group">
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-    <label for="inputPassword">Password</label>
-  </div>
+  <mat-form-field>
+    <textarea matInput [(ngModel)]="email" placeholder="email"></textarea>
+  </mat-form-field>
 
-  <div class="checkbox mb-3">
-    <label>
-      <input type="checkbox" value="remember-me"> Remember me
-    </label>
-  </div>
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-  <p class="mt-5 mb-3 text-muted text-center">© 2017-2018</p>
-</form>
+  <mat-form-field>
+    <mat-select placeholder="banana shot">
+      <mat-option value="option1">slice</mat-option>
+      <mat-option value="option2">simple</mat-option>
+      <mat-option value="option3">double</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<button mat-raised-button class="bio" (click)="login()">Login</button>
+</mat-card>
+<br>
+<br>
+<mat-card>
+<button mat-raised-button (click)="openDialog()">Dialog</button>
+</mat-card>
+
+<mat-card>
+    <button mat-raised-button color="primary" (click)="log()">Firebase auth</button>
+</mat-card>
